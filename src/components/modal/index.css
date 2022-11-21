@@ -1,0 +1,46 @@
+.modal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: whitesmoke;
+  border: 1px solid #e6e7e8;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px rgba(0, 32, 51, 0.2);
+}
+
+.modal__header,
+.modal__main,
+.modal__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.modal__header {
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rosybrown;
+  color: whitesmoke;
+  border-radius: 6px 6px 0 0;
+}
+
+.modal__main {
+}
+
+.modal__main p {
+  text-align: justify;
+}
+
+.modal__footer {
+  padding-bottom: 10px;
+  column-gap: 20px;
+}
+
+.modal__title {
+  margin: 0;
+  padding: 0;
+}
