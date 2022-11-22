@@ -1,0 +1,24 @@
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  box-sizing: border-box;
+  margin: 20px;
+  padding: 4px 10px;
+  max-width: 600px;
+  max-height: 100%;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.todo-list::-webkit-scrollbar {
+  background: rgba(0, 66, 105, 0.06);
+  border-radius: 4px;
+  width: 6px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: #ced8de;
+  border-radius: 4px;
+}

@@ -1,6 +1,43 @@
-import { Modal } from 'components/modal';
 import React, { FC, useState } from 'react';
+// components
+import { Modal } from 'components/modal';
+// style
 import './index.css';
+import { CardList } from 'components/card-list';
+import { ITodo } from 'utils/types';
+
+const mockTodos: ITodo[] = [
+  {
+    title: 'Mock Task',
+    description: 'something important',
+    deadline: '2022-10-21 12:00:31',
+    files: [],
+  },
+  {
+    title: 'Mock Task',
+    description: 'something important',
+    deadline: '2022-10-21 12:00:31',
+    files: [],
+  },
+  {
+    title: 'Mock Task',
+    description: 'something important',
+    deadline: '2022-10-21 12:00:31',
+    files: [],
+  },
+  {
+    title: 'Mock Task',
+    description: 'something important',
+    deadline: '2022-10-21 12:00:31',
+    files: [],
+  },
+  {
+    title: 'Mock Task',
+    description: 'something important',
+    deadline: '2022-10-21 12:00:31',
+    files: [],
+  },
+];
 
 const App: FC = () => {
   let [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,12 +63,21 @@ const App: FC = () => {
             Add New Todo
           </button>
         </form>
+        <CardList todos={mockTodos} />
       </main>
       <footer className='app__footer'>
         <span>
           Background Image by{' '}
           <a href='https://www.freepik.com/free-vector/white-abstract-background_11771164.htm#query=abstract%20background&position=42&from_view=search&track=sph'>
             Freepik
+          </a>
+          {' | '}
+          <a target='_blank' href='https://icons8.com/icon/85934/pencil'>
+            Pencil
+          </a>{' '}
+          icon by{' '}
+          <a target='_blank' href='https://icons8.com'>
+            Icons8
           </a>
         </span>
         <span>

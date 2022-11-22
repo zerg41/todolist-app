@@ -1,0 +1,59 @@
+.todo-list__item {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+.todo {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 180px;
+  padding: 20px;
+  background-color: white;
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+.todo_completed {
+  background-color: bisque;
+}
+
+.todo__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+.todo__title {
+  display: inline;
+  margin: 0;
+  margin-left: 20px;
+  padding: 0;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 130%;
+
+  color: #333333;
+}
+
+.todo__title_crossed-out {
+  text-decoration: line-through;
+
+  color: #33333320;
+}
+
+.todo__button {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.edit__button {
+  background-color: white;
+  background-image: url('../../assets/images/icons8-pencil-24.png');
+}
