@@ -30,7 +30,7 @@ export const Card: FC<CardProps> = ({ todo }) => {
 
           <span>
             <button className='todo__button edit-button' />
-            <button>Delete</button>
+            <button className='todo__button delete-button' />
           </span>
         </header>
         <main>

@@ -66,12 +66,12 @@ const App: FC = () => {
         <CardList todos={mockTodos} />
       </main>
       <footer className='app__footer'>
-        <span>
+        <span style={{ textAlign: 'center' }}>
           Background Image by{' '}
           <a href='https://www.freepik.com/free-vector/white-abstract-background_11771164.htm#query=abstract%20background&position=42&from_view=search&track=sph'>
             Freepik
           </a>
-          {' | '}
+          <br />
           <a target='_blank' href='https://icons8.com/icon/85934/pencil'>
             Pencil
           </a>{' '}

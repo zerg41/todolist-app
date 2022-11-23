@@ -48,12 +48,19 @@
 }
 
 .todo__button {
-  width: 20px;
-  height: 20px;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  padding: 0;
   cursor: pointer;
+  object-fit: fill;
+  background-color: white;
+  border: 1px solid;
 }
 
-.edit__button {
-  background-color: white;
+.edit-button {
   background-image: url('../../assets/images/icons8-pencil-24.png');
+}
+
+.delete-button {
 }
