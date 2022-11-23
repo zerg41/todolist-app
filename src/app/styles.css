@@ -13,22 +13,6 @@
   color: #111111;
 }
 
-.app__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 50px;
-}
-
-.app__title {
-  margin: 0;
-  font-weight: 400;
-  font-size: 3rem;
-  line-height: 100%;
-  color: #3071f2;
-}
-
 .app__content {
   display: flex;
   flex-grow: 1;
@@ -41,16 +25,12 @@
   overflow: hidden;
 }
 
-.app__footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 80px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 0;
+.app__add-todo-button {
   font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
+  font-size: 1.4rem;
+  padding: 20px;
+  margin: 10px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
 }

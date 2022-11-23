@@ -14,7 +14,7 @@ export const CardList: FC<CardListProps> = ({ todos }) => {
   return (
     <ul className='todo-list'>
       {todos?.map((todo, index) => (
-        <Card key={`todo-${index}`} todo={todo} />
+        <Card key={`todo-${todo.id}`} todo={todo} />
       ))}
     </ul>
   );

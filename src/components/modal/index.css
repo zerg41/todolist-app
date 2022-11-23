@@ -2,11 +2,15 @@
   position: absolute;
   top: 30%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 600px;
   background: whitesmoke;
   border: 1px solid #e6e7e8;
   border-radius: 6px;
+  transform: translate(-50%, -50%);
   box-shadow: 0px 2px 5px rgba(0, 32, 51, 0.2);
 }
 

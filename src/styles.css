@@ -1,0 +1,28 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--base-color);
+}
+
+:root {
+  --base-color: #111111;
+
+  --primary-color: #3071f2;
+  --primary-color-opacity20: #3071f220;
+  --primary-color-opacity60: #3071f260;
+
+  --success-color: #4bb543;
+  --success-color-opacity20: #4bb54320;
+  --success-color-opacity60: #4bb54360;
+
+  --danger-color: #fa5252;
+  --danger-color-opacity20: #fa525220;
+  --danger-color-opacity60: #fa525260;
+
+  --warning-color: #fcc419;
+  --warning-color-opacity20: #fcc41920;
+  --warning-color-opacity60: #fcc41960;
+}

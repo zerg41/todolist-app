@@ -1,25 +1,25 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+import React, { FC } from 'react';
+// style
 import './index.css';
-
-const CONFIRMATION_DELAY = 5;
-const ONE_SECOND = 1000;
+// utils
+import { ITodo } from 'utils/types';
+import { Button } from 'components/button';
 
 type ModalProps = {
   isOpen: boolean;
+  content?: ITodo;
   onClose: () => void;
   onAccept: () => void;
 };
 
-export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept }) => {
+export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) => {
   return (
     <>
       {isOpen && (
         <div className='modal'>
           <header className='modal__header'>
-            <h3 className='modal__title'>Согласие с правилами</h3>
-            <button className='close-button' onClick={onClose}>
-              x
-            </button>
+            <h3 className='modal__title'>{`${content ? 'Edit' : 'Add New'} Todo`}</h3>
+            <Button type='close' onClick={onClose} />
           </header>
           <main className='modal__main'>
             <form>

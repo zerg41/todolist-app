@@ -18,7 +18,8 @@
     0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 .todo_completed {
-  background-color: bisque;
+  background-color: var(--success-color-opacity20);
+  color: #33333320;
 }
 
 .todo__header {
@@ -43,24 +44,10 @@
 
 .todo__title_crossed-out {
   text-decoration: line-through;
-
   color: #33333320;
 }
 
-.todo__button {
-  box-sizing: border-box;
-  width: 26px;
-  height: 26px;
-  padding: 0;
-  cursor: pointer;
-  object-fit: fill;
-  background-color: white;
-  border: 1px solid;
-}
-
-.edit-button {
-  background-image: url('../../assets/images/icons8-pencil-24.png');
-}
-
-.delete-button {
+.todo__button-group {
+  display: flex;
+  column-gap: 6px;
 }

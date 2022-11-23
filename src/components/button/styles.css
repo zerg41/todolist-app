@@ -1,0 +1,69 @@
+/* Default */
+.todo__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 26px;
+  height: 26px;
+  padding: 5px;
+  margin: 0;
+  object-fit: cover;
+  background-color: white;
+  background-repeat: no-repeat;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo__button:hover {
+  box-shadow: 0px 0px 10px var(--primary-color-opacity60);
+}
+
+.todo__button:active {
+  box-shadow: none;
+  background-color: var(--primary-color-opacity20);
+}
+
+/* Edit Button */
+.edit-button {
+  border: 1px solid var(--warning-color);
+  background-image: url('../../assets/images/icons8-pencil-24-warning.png');
+}
+
+.edit-button:hover {
+  box-shadow: 0px 0px 10px var(--warning-color-opacity60);
+  opacity: 60;
+}
+
+.edit-button:active {
+  background-color: var(--warning-color-opacity20);
+}
+
+/* Delete Button */
+.delete-button {
+  border: 1px solid var(--danger-color);
+  background-image: url('../../assets/images/icons8-remove-24-danger.png');
+}
+
+.delete-button:hover {
+  box-shadow: 0px 0px 10px var(--danger-color-opacity60);
+}
+
+.delete-button:active {
+  background-color: var(--danger-color-opacity20);
+}
+
+/* Close Button */
+.close-button {
+  border: 1px solid #111111;
+  background-image: url('../../assets/images/icons8-close-24.png');
+}
+
+.close-button:hover {
+  box-shadow: 0px 0px 10px #11111160;
+}
+
+.close-button:active {
+  background-color: #11111120;
+}

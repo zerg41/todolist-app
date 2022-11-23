@@ -1,18 +1,37 @@
-import React, { FC, useState } from 'react';
+import React, { FC, SyntheticEvent, useState } from 'react';
 // style
-import './index.css';
+import './styles.css';
 // utils
 import type { ITodo } from 'utils/types';
+import { Modal } from 'components/modal';
+import { Button } from 'components/button';
 
 type CardProps = {
   todo: ITodo;
 };
 
 export const Card: FC<CardProps> = ({ todo }) => {
+  let { id, title, description, deadline, files } = todo;
   let [isCompleted, setIsCompleted] = useState(false);
+  let [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleAddButtonClick() {
+    setIsModalOpen(false);
+  }
+
+  function handleModalClose() {
+    setIsModalOpen(false);
+  }
+
+  function handleEditButtonClick() {
+    setIsModalOpen(true);
+  }
+
+  function handleDeleteButtonClick() {}
+
   return (
     <li className='todo-list__item'>
-      <article className={`todo ${isCompleted && 'todo_completed'}`}>
+      <article className={`todo ${isCompleted ? 'todo_completed' : ''}`}>
         <header className='todo__header'>
           <span>
             <input
@@ -23,22 +42,21 @@ export const Card: FC<CardProps> = ({ todo }) => {
               }}
               style={{ cursor: 'pointer' }}
             />
-            <h4 className={`todo__title ${isCompleted && 'todo__title_crossed-out'}`}>
-              {todo.title}
-            </h4>
+            <h4 className={`todo__title ${isCompleted && 'todo__title_crossed-out'}`}>{title}</h4>
           </span>
 
-          <span>
-            <button className='todo__button edit-button' />
-            <button className='todo__button delete-button' />
+          <span className='todo__button-group'>
+            <Button type='edit' onClick={handleEditButtonClick} />
+            <Button type='delete' onClick={handleDeleteButtonClick} />
           </span>
         </header>
         <main>
-          <p>{todo.description}</p>
-          <p>{todo.deadline}</p>
-          <div>{todo.files}</div>
+          <p>{description}</p>
+          <p>{deadline}</p>
+          <div>{files}</div>
         </main>
       </article>
+      <Modal isOpen={isModalOpen} onAccept={handleAddButtonClick} onClose={handleModalClose} />
     </li>
   );
 };
