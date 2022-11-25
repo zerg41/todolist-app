@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 //styles
 import './styles.css';
 

@@ -1,12 +1,12 @@
 import { FC } from 'react';
 // components
-import { Card } from 'components/card';
+import { Card } from 'components';
 // style
 import './index.css';
 // utils
 import type { ITodo } from 'utils/types';
 
-export type CardListProps = {
+type CardListProps = {
   todos?: ITodo[];
 };
 

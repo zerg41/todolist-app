@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
+// components
+import { Button } from 'components';
 // style
-import './index.css';
+import './styles.css';
 // utils
-import { ITodo } from 'utils/types';
-import { Button } from 'components/button';
+import type { ITodo } from 'utils/types';
 
 type ModalProps = {
   isOpen: boolean;

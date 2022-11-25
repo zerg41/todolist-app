@@ -1,10 +1,10 @@
-import React, { FC, SyntheticEvent, useState } from 'react';
+import React, { FC, useState } from 'react';
+// components
+import { Modal, Button } from 'components';
 // style
 import './styles.css';
 // utils
 import type { ITodo } from 'utils/types';
-import { Modal } from 'components/modal';
-import { Button } from 'components/button';
 
 type CardProps = {
   todo: ITodo;
