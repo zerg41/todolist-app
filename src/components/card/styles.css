@@ -10,6 +10,7 @@
   flex-grow: 1;
   flex-direction: column;
   box-sizing: border-box;
+  min-width: 540px;
   height: 180px;
   padding: 20px;
   background-color: white;

@@ -11,8 +11,8 @@ type CardProps = {
 };
 
 export const Card: FC<CardProps> = ({ todo }) => {
-  let { id, title, description, deadline, files } = todo;
-  let [isCompleted, setIsCompleted] = useState(false);
+  let { id, title, description, deadline, files, completed } = todo;
+  let [isCompleted, setIsCompleted] = useState(completed);
   let [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleAddButtonClick() {

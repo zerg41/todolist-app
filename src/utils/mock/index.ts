@@ -8,6 +8,7 @@ export const mockTodos: ITodo[] = [
     description: 'something important',
     deadline: '2022-10-21 12:00:31',
     files: [],
+    completed: true,
   },
   {
     id: nanoid(),
@@ -15,6 +16,7 @@ export const mockTodos: ITodo[] = [
     description: 'something important',
     deadline: '2022-10-21 12:00:31',
     files: [],
+    completed: false,
   },
   {
     id: nanoid(),
@@ -22,6 +24,7 @@ export const mockTodos: ITodo[] = [
     description: 'something important',
     deadline: '2022-10-21 12:00:31',
     files: [],
+    completed: false,
   },
   {
     id: nanoid(),
@@ -29,6 +32,7 @@ export const mockTodos: ITodo[] = [
     description: 'something important',
     deadline: '2022-10-21 12:00:31',
     files: [],
+    completed: false,
   },
   {
     id: nanoid(),
@@ -36,5 +40,6 @@ export const mockTodos: ITodo[] = [
     description: 'something important',
     deadline: '2022-10-21 12:00:31',
     files: [],
+    completed: false,
   },
 ];

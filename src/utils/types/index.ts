@@ -1,7 +1,8 @@
 export interface ITodo {
-  id: string;
+  id: string | number;
   title: string;
-  description: string;
   deadline: string;
-  files: any;
+  completed: boolean;
+  description?: string;
+  files?: any[];
 }

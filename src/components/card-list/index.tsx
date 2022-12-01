@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 // components
 import { Card } from 'components';
 // style
-import './index.css';
+import './styles.css';
 // utils
 import type { ITodo } from 'utils/types';
 
@@ -11,11 +11,13 @@ type CardListProps = {
 };
 
 export const CardList: FC<CardListProps> = ({ todos }) => {
-  return (
-    <ul className='todo-list'>
-      {todos?.map((todo, index) => (
-        <Card key={`todo-${todo.id}`} todo={todo} />
-      ))}
-    </ul>
-  );
+  let renderTodos = useMemo(() => {
+    console.log('todos=', todos);
+
+    return todos?.map((todo, index) => (
+      <Card key={`todo-${todo.id}-${Math.random()}`} todo={todo} />
+    ));
+  }, [todos]);
+
+  return <ul className='todo-list'>{renderTodos}</ul>;
 };

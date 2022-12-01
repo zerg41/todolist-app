@@ -4,6 +4,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--base-color);
 }
 
@@ -25,4 +26,22 @@ body,
   --warning-color: #fcc419;
   --warning-color-opacity20: #fcc41920;
   --warning-color-opacity60: #fcc41960;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  -webkit-clip-path: inset(100%);
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
