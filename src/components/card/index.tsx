@@ -46,8 +46,8 @@ export const Card: FC<CardProps> = ({ todo }) => {
           </span>
 
           <span className='todo__button-group'>
-            <Button type='edit' onClick={handleEditButtonClick} />
-            <Button type='delete' onClick={handleDeleteButtonClick} />
+            <Button variation='edit' onClick={handleEditButtonClick} />
+            <Button variation='delete' onClick={handleDeleteButtonClick} />
           </span>
         </header>
         <main>

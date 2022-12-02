@@ -1,11 +1,11 @@
 /* Default */
-.todo__button {
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   min-width: 26px;
-  height: 26px;
+  min-height: 26px;
   padding: 5px;
   margin: 0;
   object-fit: cover;
@@ -16,17 +16,54 @@
   cursor: pointer;
 }
 
-.todo__button:hover {
+.button:hover {
   box-shadow: 0px 0px 10px var(--primary-color-opacity60);
 }
 
-.todo__button:active {
+.button:active {
   background-color: white;
   color: var(--primary-color);
 }
 
+/* Primary Button */
+.primary-button {
+  min-width: 70px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 14px;
+  color: white;
+}
+
+.primary-button:hover {
+  box-shadow: 0px 0px 10px var(--primary-color-opacity60);
+  opacity: 60;
+}
+
+.primary-button:active {
+  color: var(--primary-color);
+}
+
+/* Danger Button */
+.danger-button {
+  min-width: 70px;
+  border: 1px solid var(--danger-color);
+  font-size: 14px;
+  color: var(--danger-color);
+}
+
+.danger-button:hover {
+  box-shadow: 0px 0px 10px var(--danger-color-opacity60);
+  opacity: 60;
+}
+
+.danger-button:active {
+  background-color: var(--danger-color);
+  color: white;
+}
+
 /* Edit Button */
 .edit-button {
+  max-height: 26px;
   border: 1px solid var(--warning-color);
   background-image: url('../../assets/images/icons8-pencil-24-warning.png');
 }
@@ -42,6 +79,7 @@
 
 /* Delete Button */
 .delete-button {
+  max-height: 26px;
   border: 1px solid var(--danger-color);
   background-image: url('../../assets/images/icons8-remove-24-danger.png');
 }
@@ -56,6 +94,7 @@
 
 /* Close Button */
 .close-button {
+  max-height: 26px;
   background: none;
   color: white;
 }

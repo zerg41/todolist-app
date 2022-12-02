@@ -1,23 +1,23 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, HTMLProps } from 'react';
 //styles
 import './styles.css';
 
 type ButtonProps = {
   className?: string;
-  type?: 'default' | 'close' | 'edit' | 'delete';
+  variation?: 'primary' | 'close' | 'edit' | 'delete' | 'danger';
   onClick?: (event: React.MouseEvent<HTMLElement>, [...props]?: any[]) => void;
-} & PropsWithChildren;
+} & HTMLProps<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = ({
   children,
   className = '',
-  type = 'default',
+  variation = 'default',
   onClick,
 }) => {
   return (
     <button
       type='button'
-      className={`todo__button ${type !== 'default' ? type + '-button' : ''} ${className}`}
+      className={`button ${variation ? variation + '-button' : ''} ${className}`}
       onClick={onClick}
     >
       {children}
