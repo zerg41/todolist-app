@@ -97,9 +97,12 @@ const App: FC = () => {
               <option value={SelectedTodos.UNFINISHED}>Unfinished</option>
             </select>
           </span>
-          <Button onClick={handleModalOpen} className='toolbar__button'>
-            Add New Todo
-          </Button>
+          <Button
+            text='Add New Todo'
+            variation='primary'
+            className='toolbar__button'
+            onClick={handleModalOpen}
+          />
         </div>
         <CardList todos={filteredTodos} />
       </main>

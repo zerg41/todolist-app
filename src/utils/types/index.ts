@@ -6,3 +6,8 @@ export interface ITodo {
   description?: string;
   files?: any[];
 }
+
+export interface IUploadedFile {
+  name: string;
+  extension: string;
+}

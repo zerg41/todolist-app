@@ -40,6 +40,8 @@
 }
 
 .primary-button:active {
+  border: none;
+  box-shadow: 0px 0px 10px var(--primary-color-opacity60);
   color: var(--primary-color);
 }
 
@@ -57,6 +59,7 @@
 }
 
 .danger-button:active {
+  box-shadow: 0px 0px 10px var(--danger-color-opacity60);
   background-color: var(--danger-color);
   color: white;
 }

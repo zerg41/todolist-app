@@ -1,11 +1,13 @@
-import React, { ChangeEvent, FC, useMemo, useState } from 'react';
+import React, { FC, ChangeEvent, FormEvent, KeyboardEvent, useMemo, useState } from 'react';
 // components
 import { Button } from 'components';
 // style
 import './styles.css';
-import uploadIconSrc from 'assets/images/icon-upload.png';
+import uploadIcon from 'assets/images/icon-upload.png';
 // utils
-import type { ITodo } from 'utils/types';
+import type { ITodo, IUploadedFile } from 'utils/types';
+
+const ESCAPE_CODE = 'Escape';
 
 type ModalProps = {
   isOpen: boolean;
@@ -15,15 +17,9 @@ type ModalProps = {
 };
 
 export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) => {
-  let [files, setFiles] = useState<{ name: string; extension: string }[]>([]);
+  let [files, setFiles] = useState<IUploadedFile[]>(content?.files ?? []);
 
-  let renderUploadedFiles = useMemo(() => {
-    return files?.map((file) => {
-      return <div className='uploaded-file__container'>{`${file.name}.${file.extension}`}</div>;
-    });
-  }, [files]);
-
-  function handleUpload(evt: ChangeEvent<HTMLInputElement>) {
+  function handleUploadFile(evt: ChangeEvent<HTMLInputElement>) {
     if (evt.target.files) {
       let file = evt.target.files[0];
       let [name, extension] = file.name.split('.');
@@ -33,17 +29,48 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
     }
   }
 
+  function handleClose() {
+    setFiles([]);
+    onClose();
+  }
+
+  function handleEscKeyDown(evt: KeyboardEvent<HTMLDivElement>) {
+    if (evt.code === ESCAPE_CODE) {
+      handleClose();
+    }
+  }
+
+  function handleSubmit(evt: FormEvent<HTMLFormElement | HTMLButtonElement>) {
+    // TODO
+    console.log(evt);
+    let form = evt.target;
+    console.log(form);
+
+    // let isValidForm = form.checkValidity();
+    // if (isValidForm) {
+    //   onClose();
+    // } else {
+    //   form.reportValidity();
+    // }
+  }
+
+  let renderUploadedFiles = useMemo(() => {
+    return files?.map((file) => {
+      return <div className='form-upload__file'>{`${file.name}.${file.extension}`}</div>;
+    });
+  }, [files]);
+
   return (
     <>
       {isOpen && (
         <>
-          <div className='modal'>
+          <div className='modal' role='alertdialog' aria-modal='true' onKeyDown={handleEscKeyDown}>
             <header className='modal__header'>
               <h3 className='modal__title'>{`${content ? 'Edit' : 'Add New'} Todo`}</h3>
-              <Button variation='close' onClick={onClose} />
+              <Button variation='close' onClick={handleClose} />
             </header>
             <main className='modal__main'>
-              <form id='todo-form' className='modal__form'>
+              <form id='todo-form' className='modal__form' onSubmit={handleSubmit}>
                 <fieldset className='modal__form-fieldset'>
                   <legend className='modal__form-legend'>Todo Information</legend>
 
@@ -58,6 +85,8 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
                     name='todo-title'
                     className='modal__form-input'
                     type='text'
+                    defaultValue={content?.title}
+                    autoFocus
                     required
                   />
 
@@ -71,8 +100,8 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
                     id='todo-deadline'
                     className='modal__form-input'
                     name='todo-deadline'
-                    type='date'
-                    translate='no'
+                    type='datetime-local'
+                    defaultValue={content?.deadline}
                     required
                   />
 
@@ -86,19 +115,20 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
                     maxLength={183}
                     rows={3}
                     spellCheck={true}
+                    defaultValue={content?.description}
                   ></textarea>
 
                   <label className='modal__form-label'>Attachments:</label>
                   <div className='modal__form-upload'>
                     <label htmlFor='todo-files' className='form-upload__drop-zone'>
-                      <img src={uploadIconSrc} alt='upload' width={40} height={40} />
+                      <img src={uploadIcon} alt='upload' width={40} height={40} />
                     </label>
                     <input
                       id='todo-files'
                       className='modal__form-input visually-hidden'
                       name='todo-files'
                       type='file'
-                      onChange={handleUpload}
+                      onChange={handleUploadFile}
                     />
                     <span className='form-upload__file-container'>{renderUploadedFiles}</span>
                   </div>
@@ -107,28 +137,23 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
             </main>
             <footer className='modal__footer'>
               <Button
+                text='OK'
                 variation='primary'
                 type='submit'
                 form='todo-form'
-                onClick={onAccept}
+                // onClick={handleSubmit}
                 disabled={false}
-              >
-                OK
-              </Button>
+              />
               <Button
+                text='Cancel'
                 variation='danger'
                 type='reset'
                 form='todo-form'
-                onClick={() => {
-                  setFiles([]);
-                  onClose();
-                }}
-              >
-                Cancel
-              </Button>
+                onClick={handleClose}
+              />
             </footer>
           </div>
-          <div className='modal__mask' onClick={onClose}></div>
+          <div className='modal__mask' onClick={handleClose}></div>
         </>
       )}
     </>

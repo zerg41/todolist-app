@@ -3,13 +3,14 @@ import React, { FC, HTMLProps } from 'react';
 import './styles.css';
 
 type ButtonProps = {
-  className?: string;
+  text?: string;
   variation?: 'primary' | 'close' | 'edit' | 'delete' | 'danger';
+  className?: string;
   onClick?: (event: React.MouseEvent<HTMLElement>, [...props]?: any[]) => void;
 } & HTMLProps<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = ({
-  children,
+  text,
   className = '',
   variation = 'default',
   onClick,
@@ -20,7 +21,7 @@ export const Button: FC<ButtonProps> = ({
       className={`button ${variation ? variation + '-button' : ''} ${className}`}
       onClick={onClick}
     >
-      {children}
+      {text}
     </button>
   );
 };
