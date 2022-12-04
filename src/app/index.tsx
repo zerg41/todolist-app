@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useMemo, useState } from 'react';
 // context
 import { ModalContext } from 'context';
 // components
@@ -20,21 +20,23 @@ const App: FC = () => {
     setIsModalOpen(false);
   }, []);
 
-  let handleModalOpen = useCallback((content?: ITodo) => {
-    setModalContent(content);
-    setIsModalOpen(true);
+  let modalContextValue = useMemo(() => {
+    return {
+      open: (content?: ITodo) => {
+        setModalContent(content);
+        setIsModalOpen(true);
+      },
+    };
   }, []);
 
   return (
     <div className='app__container'>
-      <ModalContext.Provider
-        value={{ isOpen: isModalOpen, close: handleModalClose, open: handleModalOpen }}
-      >
-        <Header />
+      <Header />
+      <ModalContext.Provider value={modalContextValue}>
         <Main />
-        <Footer />
-        <Modal isOpen={isModalOpen} onClose={handleModalClose} content={modalContent} />
       </ModalContext.Provider>
+      <Footer />
+      <Modal isOpen={isModalOpen} content={modalContent} onClose={handleModalClose} />
     </div>
   );
 };

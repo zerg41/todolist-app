@@ -21,7 +21,7 @@ export const Card: FC<CardProps> = ({ todo }) => {
   let [isCompleted, setIsCompleted] = useState(completed);
 
   function handleEdit() {
-    modal.open(todo);
+    modal?.open(todo);
   }
 
   function handleDelete() {}

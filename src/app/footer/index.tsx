@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 // style
 import './styles.css';
 
-const Footer: FC = () => {
+const Footer: FC = React.memo(() => {
   return (
     <footer className='app__footer'>
       <span style={{ textAlign: 'center' }}>
@@ -32,6 +32,6 @@ const Footer: FC = () => {
       </span>
     </footer>
   );
-};
+});
 
 export default Footer;

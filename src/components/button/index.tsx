@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { FC } from 'react';
 //styles
 import './styles.css';
 
@@ -7,7 +7,7 @@ type ButtonProps = {
   variation?: 'primary' | 'close' | 'edit' | 'delete' | 'danger';
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLElement>, [...props]?: any[]) => void;
-} & HTMLProps<HTMLButtonElement>;
+} & React.HTMLProps<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = ({
   text,

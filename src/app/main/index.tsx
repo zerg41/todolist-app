@@ -1,47 +1,24 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 // components
-import { CardList, Button } from 'components';
+import { CardList, Toolbar } from 'components';
 // style
 import './styles.css';
 // utils
 import { TodoSelectionOptions } from 'utils/constants';
-import { ModalContext } from 'context';
 
-const Main: FC = () => {
+const Main: FC = React.memo(() => {
   let [selectedTodoOption, setSelectedTodoOption] = useState<string>(TodoSelectionOptions.ALL);
-  let modal = useContext(ModalContext);
 
-  function handleFilterChange(evt: React.ChangeEvent<HTMLSelectElement>) {
-    let selectedOption = evt.target.value;
-
-    setSelectedTodoOption(selectedOption);
-  }
-
-  function handleAddTodoButtonClick() {
-    modal.open();
-  }
+  let handleFilterChange = useCallback((evt: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTodoOption(evt.target.value);
+  }, []);
 
   return (
     <main className='app__content'>
-      <div className='app__toolbar'>
-        <span className='toolbar__selector '>
-          <label htmlFor='todo-select'>Todo Filter:</label>
-          <select id='todo-select' onChange={(evt) => handleFilterChange(evt)}>
-            <option value={TodoSelectionOptions.ALL}>All</option>
-            <option value={TodoSelectionOptions.COMPLETED}>Completed</option>
-            <option value={TodoSelectionOptions.UNFINISHED}>Unfinished</option>
-          </select>
-        </span>
-        <Button
-          text='Add New Todo'
-          variation='primary'
-          className='toolbar__button'
-          onClick={handleAddTodoButtonClick}
-        />
-      </div>
+      <Toolbar onFilterChange={handleFilterChange} />
       <CardList filter={selectedTodoOption} />
     </main>
   );
-};
+});
 
 export default Main;
