@@ -7,6 +7,13 @@ export interface ITodo {
   files?: any[];
 }
 
+export interface IMockData {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 export interface IUploadedFile {
   name: string;
   extension: string;

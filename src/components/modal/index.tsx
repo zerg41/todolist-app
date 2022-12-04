@@ -5,6 +5,8 @@ import { Button } from 'components';
 import './styles.css';
 import uploadIcon from 'assets/images/icon-upload.png';
 // utils
+import dayjs from 'dayjs';
+import { INPUT_DATE_FORMAT } from 'utils/constants';
 import type { ITodo, IUploadedFile } from 'utils/types';
 
 const ESCAPE_CODE = 'Escape';
@@ -13,10 +15,9 @@ type ModalProps = {
   isOpen: boolean;
   content?: ITodo;
   onClose: () => void;
-  onAccept: () => void;
 };
 
-export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) => {
+export const Modal: FC<ModalProps> = ({ isOpen, content, onClose }) => {
   let [files, setFiles] = useState<IUploadedFile[]>(content?.files ?? []);
 
   function handleUploadFile(evt: ChangeEvent<HTMLInputElement>) {
@@ -27,11 +28,6 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
 
       setFiles((files) => [...files, { name, extension }]);
     }
-  }
-
-  function handleClose() {
-    setFiles([]);
-    onClose();
   }
 
   function handleEscKeyDown(evt: KeyboardEvent<HTMLDivElement>) {
@@ -54,6 +50,11 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
     // }
   }
 
+  function handleClose() {
+    setFiles([]);
+    onClose();
+  }
+
   let renderUploadedFiles = useMemo(() => {
     return files?.map((file) => {
       return <div className='form-upload__file'>{`${file.name}.${file.extension}`}</div>;
@@ -64,7 +65,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
     <>
       {isOpen && (
         <>
-          <div className='modal' role='alertdialog' aria-modal='true' onKeyDown={handleEscKeyDown}>
+          <div className='modal' role='dialog' aria-modal='true' onKeyDown={handleEscKeyDown}>
             <header className='modal__header'>
               <h3 className='modal__title'>{`${content ? 'Edit' : 'Add New'} Todo`}</h3>
               <Button variation='close' onClick={handleClose} />
@@ -101,7 +102,9 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, onAccept, content }) =>
                     className='modal__form-input'
                     name='todo-deadline'
                     type='datetime-local'
-                    defaultValue={content?.deadline}
+                    defaultValue={
+                      content?.deadline ? dayjs(content.deadline).format(INPUT_DATE_FORMAT) : ''
+                    }
                     required
                   />
 
