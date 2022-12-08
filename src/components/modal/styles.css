@@ -27,7 +27,7 @@
 }
 
 .modal__header,
-.modal__main,
+.modal__body,
 .modal__footer {
   display: flex;
   justify-content: space-between;
@@ -46,7 +46,7 @@
   padding: 0;
 }
 
-.modal__main {
+.modal__body {
   flex-grow: 1;
 }
 

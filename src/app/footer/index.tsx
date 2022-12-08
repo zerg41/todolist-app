@@ -4,7 +4,7 @@ import './styles.css';
 
 const Footer: FC = React.memo(() => {
   return (
-    <footer className='app__footer'>
+    <footer className='app-footer'>
       <span style={{ textAlign: 'center' }}>
         Background Image by{' '}
         <a href='https://www.freepik.com/free-vector/white-abstract-background_11771164.htm#query=abstract%20background&position=42&from_view=search&track=sph'>
@@ -17,6 +17,14 @@ const Footer: FC = React.memo(() => {
         ,{' '}
         <a target='_blank' href='https://icons8.com/icon/85934/pencil' rel='noreferrer'>
           Pencil
+        </a>{' '}
+        ,{' '}
+        <a target='_blank' href='https://icons8.com/icon/82759/ok'>
+          Ok
+        </a>{' '}
+        ,{' '}
+        <a target='_blank' href='https://icons8.com/icon/82767/clock'>
+          Clock
         </a>{' '}
         ,{' '}
         <a target='_blank' href='https://icons8.com/icon/82771/close' rel='noreferrer'>

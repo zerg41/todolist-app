@@ -9,12 +9,7 @@ type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLElement>, [...props]?: any[]) => void;
 } & React.HTMLProps<HTMLButtonElement>;
 
-export const Button: FC<ButtonProps> = ({
-  text,
-  className = '',
-  variation = 'default',
-  onClick,
-}) => {
+export const Button: FC<ButtonProps> = ({ text, variation, className = '', onClick }) => {
   return (
     <button
       type='button'

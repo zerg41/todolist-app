@@ -1,8 +1,10 @@
-import React, { FC, useCallback, useContext, useEffect } from 'react';
+import React, { FC, useContext } from 'react';
 // context
 import { ModalContext } from 'context';
 // components
 import { Button } from 'components';
+// style
+import './styles.css';
 // utils
 import { TodoSelectionOptions } from 'utils/constants';
 
@@ -17,12 +19,8 @@ export const Toolbar: FC<ToolbarProps> = React.memo(({ onFilterChange }) => {
     modal?.open();
   }
 
-  useEffect(() => {
-    console.log('toolbar render');
-  });
-
   return (
-    <div className='app__toolbar'>
+    <div className='toolbar'>
       <span className='toolbar__selector '>
         <label htmlFor='todo-select'>Todo Filter:</label>
         <select id='todo-select' onChange={(evt) => onFilterChange(evt)}>

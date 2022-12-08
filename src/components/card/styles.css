@@ -1,13 +1,11 @@
 .todo {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
+  width: 100%;
   box-sizing: border-box;
-  min-width: 540px;
-  height: 180px;
   padding: 20px;
   background-color: white;
-
+  border-radius: 4px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
     0px 0px 1px rgba(0, 0, 0, 0.04);
 }
@@ -16,20 +14,22 @@
   display: flex;
   justify-content: space-between;
   align-items: top;
+  column-gap: 4px;
 }
 
 .todo__title {
-  display: inline;
   margin: 0;
-  margin-left: 20px;
   padding: 0;
-
-  font-style: normal;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 1.1rem;
   line-height: 130%;
+  color: var(--base-color);
+}
 
-  color: #333333;
+.todo__id {
+  display: block;
+  color: darkgrey;
+  font-size: 10px;
 }
 
 .todo__button-group {
@@ -37,12 +37,71 @@
   column-gap: 6px;
 }
 
+.todo__body {
+  margin-top: 6px;
+}
+
+.todo-deadline {
+  position: relative;
+}
+
+.todo-deadline__label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 6px;
+  padding-left: 36px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--base-color);
+  cursor: pointer;
+}
+
+.todo-deadline__label::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  width: 24px;
+  height: 24px;
+  background-image: url('assets/icons/icons8-clock.svg');
+  background-repeat: no-repeat;
+}
+
+.todo-description {
+  margin-top: 6px;
+  min-height: 50px;
+  border: 1px solid #dedede;
+  border-radius: 4px;
+}
+
+.todo-attachments {
+  display: flex;
+  column-gap: 10px;
+  margin-top: 6px;
+  height: 12px;
+  padding: 0.5rem;
+  background: transparent;
+}
+
+.todo_outdated .todo-deadline__label {
+  background-color: var(--warning-color-opacity20);
+}
+
 .todo_completed {
-  background-color: var(--success-color-opacity20);
+  /* background-color: var(--success-color-opacity20); */
   color: #33333320;
 }
 
 .todo_completed .todo__title {
   text-decoration: line-through;
   color: #33333320;
+}
+
+.todo_completed .todo-deadline__label {
+  background-color: var(--success-color-opacity20);
+}
+
+.todo_completed .todo-deadline__label::before {
+  background-image: url('assets/icons/icons8-ok.svg');
 }

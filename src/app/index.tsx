@@ -30,7 +30,7 @@ const App: FC = () => {
   }, []);
 
   return (
-    <div className='app__container'>
+    <div className='app'>
       <Header />
       <ModalContext.Provider value={modalContextValue}>
         <Main />

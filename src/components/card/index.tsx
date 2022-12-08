@@ -19,6 +19,7 @@ export const Card: FC<CardProps> = ({ todo }) => {
 
   let modal = useContext(ModalContext);
   let [isCompleted, setIsCompleted] = useState(completed);
+  let isOutdated = dayjs().isAfter(deadline);
 
   function handleEdit() {
     modal?.open(todo);
@@ -26,31 +27,42 @@ export const Card: FC<CardProps> = ({ todo }) => {
 
   function handleDelete() {}
 
-  function handleStatusChange() {}
+  function handleStatusChange() {
+    setIsCompleted(!isCompleted);
+  }
 
   return (
-    <article className={`todo ${isCompleted ? 'todo_completed' : ''}`}>
+    <article
+      className={`todo  ${isOutdated && 'todo_outdated'} ${isCompleted && 'todo_completed'}`}
+    >
       <header className='todo__header'>
-        <span>
+        <div>
+          <h4 className={`todo__title ${isCompleted && 'todo__title_crossed-out'}`}>{title}</h4>
+          <span className='todo__id'>{`# ${id}`}</span>
+        </div>
+        <div className='todo__button-group'>
+          <Button variation='edit' onClick={handleEdit} />
+          <Button variation='delete' onClick={handleDelete} />
+        </div>
+      </header>
+      <section className='todo__body'>
+        <div className='todo-deadline'>
+          <label htmlFor={`checkDeadlineTodo${id}`} className='todo-deadline__label'>
+            {dayjs(deadline).format(CARD_DATE_FORMAT)}
+          </label>
           <input
+            id={`checkDeadlineTodo${id}`}
             type='checkbox'
             checked={isCompleted}
             onChange={handleStatusChange}
-            style={{ cursor: 'pointer' }}
+            className='visually-hidden'
           />
-          <h4 className={`todo__title ${isCompleted && 'todo__title_crossed-out'}`}>{title}</h4>
-        </span>
-
-        <span className='todo__button-group'>
-          <Button variation='edit' onClick={handleEdit} />
-          <Button variation='delete' onClick={handleDelete} />
-        </span>
-      </header>
-      <main>
-        <p>{description}</p>
-        <p>{dayjs(deadline).format(CARD_DATE_FORMAT)}</p>
-        <div>{files}</div>
-      </main>
+        </div>
+        <div className='todo-description'>
+          <p>{description}</p>
+        </div>
+        <div className='todo-attachments'>{files}</div>
+      </section>
     </article>
   );
 };

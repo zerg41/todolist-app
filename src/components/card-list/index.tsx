@@ -4,37 +4,20 @@ import { Card } from 'components';
 // style
 import './styles.css';
 // utils
-import type { IMockData, ITodo } from 'utils/types';
-import { TodoSelectionOptions } from 'utils/constants';
 import dayjs from 'dayjs';
+import { TodoSelectionOptions } from 'utils/constants';
+import type { IMockData, ITodo } from 'utils/types';
 
 type CardListProps = {
   filter?: string;
 };
 
 export const CardList: FC<CardListProps> = ({ filter }) => {
-  let [allTodos, setAllTodos] = useState<ITodo[]>([]);
+  let [todos, setTodos] = useState<ITodo[]>([]);
 
-  let filteredTodos: ITodo[] = useMemo(() => {
-    let todos = allTodos;
-
-    switch (filter as typeof TodoSelectionOptions[keyof typeof TodoSelectionOptions]) {
-      case 'all':
-        todos = allTodos;
-        break;
-      case 'completed':
-        todos = allTodos.filter((todo) => todo.completed === true);
-        break;
-      case 'unfinished':
-        todos = allTodos.filter((todo) => todo.completed === false);
-        break;
-    }
-
-    return todos.slice(0, 10);
-  }, [allTodos, filter]);
-
+  /** Get Todos From Remote Server **/
   useEffect(() => {
-    if (allTodos.length) {
+    if (todos.length) {
       return;
     }
 
@@ -47,7 +30,7 @@ export const CardList: FC<CardListProps> = ({ filter }) => {
       })
       .then((mockData) =>
         mockData.slice(0, 10).forEach((item: IMockData) => {
-          setAllTodos((todos) => [
+          setTodos((todos) => [
             ...todos,
             {
               id: item.id,
@@ -57,16 +40,40 @@ export const CardList: FC<CardListProps> = ({ filter }) => {
             },
           ]);
         })
-      );
-  }, [allTodos]);
+      )
+      .catch((err) => alert(err));
+  }, [todos]);
 
-  let renderTodos = useMemo(() => {
-    return filteredTodos?.map((todo, index) => (
-      <li key={`todo-${todo.id}`} className='todo-list__item'>
-        <Card todo={todo} />
-      </li>
-    ));
-  }, [filteredTodos]);
+  let filteredTodos = filterTodos(todos, filter).map((todo) => (
+    <li key={`todo-${todo.id}`} className='todo-list__list-item'>
+      <Card todo={todo} />
+    </li>
+  ));
 
-  return <ul className='todo-list'>{renderTodos}</ul>;
+  useEffect(() => {
+    console.log('toodlist render');
+  });
+
+  return (
+    <section className='todo-list'>
+      <ul className='todo-list__list'>{filteredTodos}</ul>
+    </section>
+  );
 };
+
+function filterTodos(todos: ITodo[], filter?: string) {
+  if (filter) {
+    switch (filter as typeof TodoSelectionOptions[keyof typeof TodoSelectionOptions]) {
+      case 'all':
+        break;
+      case 'completed':
+        todos = todos.filter((todo) => todo.completed === true);
+        break;
+      case 'unfinished':
+        todos = todos.filter((todo) => todo.completed === false);
+        break;
+    }
+  }
+
+  return todos;
+}

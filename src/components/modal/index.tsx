@@ -38,9 +38,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, content, onClose }) => {
 
   function handleSubmit(evt: FormEvent<HTMLFormElement | HTMLButtonElement>) {
     // TODO
-    console.log(evt);
     let form = evt.target;
-    console.log(form);
 
     // let isValidForm = form.checkValidity();
     // if (isValidForm) {
@@ -70,7 +68,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, content, onClose }) => {
               <h3 className='modal__title'>{`${content ? 'Edit' : 'Add New'} Todo`}</h3>
               <Button variation='close' onClick={handleClose} />
             </header>
-            <main className='modal__main'>
+            <section className='modal__body'>
               <form id='todo-form' className='modal__form' onSubmit={handleSubmit}>
                 <fieldset className='modal__form-fieldset'>
                   <legend className='modal__form-legend'>Todo Information</legend>
@@ -137,7 +135,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, content, onClose }) => {
                   </div>
                 </fieldset>
               </form>
-            </main>
+            </section>
             <footer className='modal__footer'>
               <Button
                 text='OK'
